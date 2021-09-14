@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import AddFriendForm from "./AddFriendForm";
 
@@ -24,7 +25,9 @@ const FriendsList = () => {
       {friendsList.map((friend) => {
         return (
           <div key={friend.id}>
-            <p>name: {friend.name}</p>
+            <Link to={`/friends/${friend.id}`}>
+              <p>name: {friend.name}</p>
+            </Link>
             <p>age: {friend.age}</p>
             <p>email: {friend.email}</p>
           </div>
