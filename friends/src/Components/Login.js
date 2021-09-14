@@ -8,7 +8,7 @@ const initialState = {
   },
 };
 
-const Login = () => {
+const Login = (props) => {
   const [input, setInput] = useState(initialState);
   const handleChange = (e) => {
     setInput({
@@ -24,6 +24,7 @@ const Login = () => {
       .post(`http://localhost:5000/api/login`, input.credentials)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
+        props.history.push(`/friends`);
       })
       .catch((err) => {
         console.log(err);
