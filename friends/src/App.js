@@ -19,8 +19,9 @@ function App() {
           </li>
         </ul>
         <Switch>
+          {/* <PrivateRoute path='' component={AddFriendForm} /> */}
           <PrivateRoute exact path="/friends" component={FriendsList} />
-          <Route path="/logout" component={Logout} />
+          <PrivateRoute path="/logout" component={Logout} />
           <Route path="/login" component={Login} />
           <Route path="/" component={Login} />
         </Switch>
