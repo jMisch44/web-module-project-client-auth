@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import "./AddFriendForm.css";
 
 const Friend = (props) => {
   const { id } = useParams();
@@ -16,8 +17,8 @@ const Friend = (props) => {
   }, []);
 
   return (
-    <div key={friend.id}>
-      <p>name: {friend.name}</p>
+    <div className="friend" key={friend.id}>
+      <h2>{friend.name}</h2>
       <p>age: {friend.age}</p>
       <p>email: {friend.email}</p>
     </div>

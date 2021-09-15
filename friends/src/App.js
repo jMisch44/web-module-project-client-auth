@@ -11,14 +11,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/login">Login</Link>
-          </li>
-          <li>
-            <Link to="/logout">Logout</Link>
-          </li>
-        </ul>
+        <header>
+          <Link className="link" to="/login">
+            Login
+          </Link>
+          <Link className="link" to="/logout">
+            Logout
+          </Link>
+        </header>
         <Switch>
           <PrivateRoute exact path="/friends/:id" component={Friend} />
           <PrivateRoute exact path="/friends" component={FriendsList} />

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Spinner, FormGroup, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
 
 const Login = (props) => {
   const [input, setInput] = useState(initialState);
+  const [isLoading, setIsLoading] = useState(false);
   const handleChange = (e) => {
     setInput({
       credentials: {
@@ -20,10 +22,12 @@ const Login = (props) => {
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    setIsLoading(true);
     axios
       .post(`http://localhost:5000/api/login`, input.credentials)
       .then((res) => {
         localStorage.setItem("token", res.data.payload);
+        setIsLoading(false);
         props.history.push(`/friends`);
       })
       .catch((err) => {
@@ -33,27 +37,31 @@ const Login = (props) => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <label>
-          username
-          <input
-            type="text"
-            name="username"
-            value={input.credentials.username}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          password
-          <input
-            type="password"
-            name="password"
-            value={input.credentials.password}
-            onChange={handleChange}
-          />
-        </label>
-        <button>Submit</button>
-      </form>
+      {isLoading ? (
+        <Spinner color="secondary" children="" />
+      ) : (
+        <FormGroup onSubmit={handleSubmit}>
+          <Label>
+            Username
+            <Input
+              type="text"
+              name="username"
+              value={input.credentials.username}
+              onChange={handleChange}
+            />
+          </Label>
+          <Label>
+            Password
+            <Input
+              type="password"
+              name="password"
+              value={input.credentials.password}
+              onChange={handleChange}
+            />
+          </Label>
+          <Button onClick={handleSubmit}>Submit</Button>
+        </FormGroup>
+      )}
     </div>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
+import "./AddFriendForm.css";
 
 const initialState = {
-  id: Date.now(),
   name: "",
   age: 0,
   email: "",
@@ -18,11 +18,12 @@ const AddFriendForm = (props) => {
     axiosWithAuth()
       .post(`http://localhost:5000/api/friends`, newFriend)
       .then((res) => {
-        props.setFriendsList(res.data);
+        props.setFriendsList((friends) => [...friends, newFriend]);
       })
       .catch((err) => {
         console.log(err);
       });
+    setNewFriend(initialState);
   };
   return (
     <div>
@@ -54,7 +55,7 @@ const AddFriendForm = (props) => {
             onChange={handleChange}
           />
         </label>
-        <button>Submit</button>
+        <button className="form-btn">Submit</button>
       </form>
     </div>
   );
