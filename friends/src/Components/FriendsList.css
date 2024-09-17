@@ -1,0 +1,30 @@
+.add-friend{
+  border: #e5e5e5;
+  color: #606c38;
+}
+.add-friend:hover{
+  transition: 0.3s;
+  color: #bc6c25;
+}
+
+.card-container{
+  display: flex;
+  justify-content: center;
+}
+.card{
+  display: flex;
+  width: 40%;
+  padding: 2%;
+  background-color: #f3f3f3;
+  border: 1px solid #e5e5e5;
+  }
+  .friend-link{
+    color: #606c38;
+    text-decoration: none;
+    padding: 0 1.5%;
+  }
+  .friend-link:hover{
+    transition: 0.3s;
+    color: #bc6c25;
+  }
+  

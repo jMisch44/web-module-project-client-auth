@@ -1,0 +1,23 @@
+.App {
+  text-align: center;
+  margin: 0 auto;
+}
+
+header{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 2%;
+  background-color: #283618;
+}
+
+.link{
+  color: #dda15e;
+  text-decoration: none;
+  padding: 0 1.5%;
+}
+.link:hover{
+  transition: 0.3s;
+  color: #bc6c25;
+}
+
